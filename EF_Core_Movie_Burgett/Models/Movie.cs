@@ -10,18 +10,18 @@ namespace EF_Core_Movie_Burgett.Models
     {
         public int MovieId { get; set; }
 
-        [Required(ErrorMessage = "Please enter a name.")]
+        [Required(ErrorMessage = "Please enter a Name.")]
         public string Name { get; set; }
 
-        [Required(ErrorMessage = "Please enter a year.")]
-        [Range(1889, 2050, ErrorMessage = "Year must be between 1889 and now.")]
+        [Required(ErrorMessage = "Please enter a Year.")]
+        [Range(1889, 2021, ErrorMessage = "Year must be between 1889 - 2021.")]
         public int? Year { get; set; }
 
-        [Required(ErrorMessage = "Please enter a rating.")]
-        [Range(1, 5, ErrorMessage = "Rating must be between 1 and 5.")]
+        [Required(ErrorMessage = "Please enter a Rating.")]
+        [Range(1, 5, ErrorMessage = "Rating must be between 1 - 5.")]
         public int? Rating { get; set; }
 
-        [Required(ErrorMessage = "Please enter a genre.")]
+        [Required(ErrorMessage = "Please enter a Genre.")]
         public string GenreId { get; set; }
         public Genre Genre { get; set; }
 
