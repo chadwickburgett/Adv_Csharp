@@ -23,7 +23,7 @@ namespace EF_Core_Movie_Burgett.Models
                     MovieId = 4,
                     Name = "Casablanca",
                     Year = 1943,
-                    Rating = 5,
+                    Rating = 4,
                     GenreId = "D"
                 },
                 new Movie

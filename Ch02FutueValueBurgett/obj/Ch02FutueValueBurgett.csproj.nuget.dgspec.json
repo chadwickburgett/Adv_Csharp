@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\dontf\\source\\repos\\Ch02FutueValueBurgett\\Ch02FutueValueBurgett.csproj": {}
+    "C:\\Users\\dontf\\Documents\\GitHub\\Adv_Csharp\\Ch02FutueValueBurgett\\Ch02FutueValueBurgett.csproj": {}
   },
   "projects": {
-    "C:\\Users\\dontf\\source\\repos\\Ch02FutueValueBurgett\\Ch02FutueValueBurgett.csproj": {
+    "C:\\Users\\dontf\\Documents\\GitHub\\Adv_Csharp\\Ch02FutueValueBurgett\\Ch02FutueValueBurgett.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\dontf\\source\\repos\\Ch02FutueValueBurgett\\Ch02FutueValueBurgett.csproj",
+        "projectUniqueName": "C:\\Users\\dontf\\Documents\\GitHub\\Adv_Csharp\\Ch02FutueValueBurgett\\Ch02FutueValueBurgett.csproj",
         "projectName": "Ch02FutueValueBurgett",
-        "projectPath": "C:\\Users\\dontf\\source\\repos\\Ch02FutueValueBurgett\\Ch02FutueValueBurgett.csproj",
+        "projectPath": "C:\\Users\\dontf\\Documents\\GitHub\\Adv_Csharp\\Ch02FutueValueBurgett\\Ch02FutueValueBurgett.csproj",
         "packagesPath": "C:\\Users\\dontf\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\dontf\\source\\repos\\Ch02FutueValueBurgett\\obj\\",
+        "outputPath": "C:\\Users\\dontf\\Documents\\GitHub\\Adv_Csharp\\Ch02FutueValueBurgett\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\dontf\\AppData\\Roaming\\NuGet\\NuGet.Config",
