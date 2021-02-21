@@ -8267,11 +8267,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\murach\\aspnet_core_mvc\\ex_solutions\\Ch06Ex1RoutingPractice\\RoutingPractice\\RoutingPractice.csproj",
+      "projectUniqueName": "C:\\Users\\dontf\\Documents\\GitHub\\Adv_Csharp\\Routing Practice\\RoutingPractice\\RoutingPractice.csproj",
       "projectName": "RoutingPractice",
-      "projectPath": "C:\\murach\\aspnet_core_mvc\\ex_solutions\\Ch06Ex1RoutingPractice\\RoutingPractice\\RoutingPractice.csproj",
+      "projectPath": "C:\\Users\\dontf\\Documents\\GitHub\\Adv_Csharp\\Routing Practice\\RoutingPractice\\RoutingPractice.csproj",
       "packagesPath": "C:\\Users\\dontf\\.nuget\\packages\\",
-      "outputPath": "C:\\murach\\aspnet_core_mvc\\ex_solutions\\Ch06Ex1RoutingPractice\\RoutingPractice\\obj\\",
+      "outputPath": "C:\\Users\\dontf\\Documents\\GitHub\\Adv_Csharp\\Routing Practice\\RoutingPractice\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\dontf\\AppData\\Roaming\\NuGet\\NuGet.Config",
