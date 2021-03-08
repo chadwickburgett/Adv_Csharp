@@ -8,10 +8,10 @@ namespace dataTranferBurgett.Models
             : base(options)
         { }
 
-        public DbSet<Country> Countries { get; set; }
-        public DbSet<Game> Games { get; set; }
-        public DbSet<Category> Categories { get; set; }
-        public DbSet<Sport> Sports { get; set; }
+        public DbSet<Country> Country { get; set; }
+        public DbSet<Game> Game { get; set; }
+        public DbSet<Category> Category { get; set; }
+        public DbSet<Sport> Sport { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -37,7 +37,7 @@ namespace dataTranferBurgett.Models
                 new Sport { SportID = "Skate", Name = "Skateboarding" }
                 );
             modelBuilder.Entity<Country>().HasData(
-                new { CountryID = "Cn", Name = "Canada", CategoryId = "in", SportID = "Curl", GameID = "winter", FlagImage = "canada.jpg" },
+                new { CountryID = "Cn", Name = "Canada", CategoryId = "in", SportID = "Curl", GameID = "winter", FlagImage = "canada.jfif" },
                 new { CountryID = "Sw", Name = "Sweden", CategoryId = "in", SportID = "Curl", GameID = "winter", FlagImage = "sweden.jfif" },
                 new { CountryID = "GB", Name = "Great Britain", CategoryId = "in", SportID = "Curl", GameID = "winter", FlagImage = "great_britain.jfif" },
                 new { CountryID = "Jm", Name = "Jamaica", CategoryId = "out", SportID = "Bob", GameID = "winter", FlagImage = "jamaica.jfif" },
@@ -45,7 +45,7 @@ namespace dataTranferBurgett.Models
                 new { CountryID = "Jp", Name = "Japan", CategoryId = "out", SportID = "Bob", GameID = "winter", FlagImage = "japan.jfif" },
                 new { CountryID = "Gm", Name = "Germany", CategoryId = "in", SportID = "Dive", GameID = "summer", FlagImage = "germany.jfif" },
                 new { CountryID = "Ch", Name = "China", CategoryId = "in", SportID = "Dive", GameID = "summer", FlagImage = "china.jfif" },
-                new { CountryID = "Mx", Name = "Mexico", CategoryId = "in", SportID = "Dive", GameID = "summer", FlagImage = "Mexico.jfif" },
+                new { CountryID = "Mx", Name = "Mexico", CategoryId = "in", SportID = "Dive", GameID = "summer", FlagImage = "mexico.jfif" },
                 new { CountryID = "Bz", Name = "Brazil", CategoryId = "out", SportID = "RC", GameID = "summer", FlagImage = "brazil.jfif" },
                 new { CountryID = "Nl", Name = "Netherlands", CategoryId = "out", SportID = "RC", GameID = "summer", FlagImage = "netherlands.jfif" },
                 new { CountryID = "US", Name = "USA", CategoryId = "out", SportID = "RC", GameID = "summer", FlagImage = "USA.jfif" },

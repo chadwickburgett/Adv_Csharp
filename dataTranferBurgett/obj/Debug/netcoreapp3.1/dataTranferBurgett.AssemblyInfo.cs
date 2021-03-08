@@ -11,6 +11,7 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("44a32614-ed6c-40e5-bc24-08fef72b1ee1")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("dataTranferBurgett")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]

@@ -23,7 +23,7 @@ namespace dataTranferBurgett
             services.AddMemoryCache();
             services.AddSession();
 
-            services.AddControllersWithViews().AddNewtonsoftJson();
+            services.AddControllersWithViews().AddNewtonsoftJson().AddRazorRuntimeCompilation();
 
             services.AddDbContext<CountryContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("CountryContext")));

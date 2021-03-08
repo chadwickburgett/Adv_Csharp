@@ -31,7 +31,7 @@ namespace dataTranferBurgett.Controllers
 
                 List<Country> mycountries = new List<Country>();
                 if (ids.Length > 0)
-                    mycountries = context.Countries.Include(c => c.Game)
+                    mycountries = context.Country.Include(c => c.Game)
                         .Include(c => c.Category) .Include(c => c.Sport)
                         .Where(c => ids.Contains(c.CountryID)).ToList();
                 session.SetMyCountries(mycountries);
@@ -42,12 +42,12 @@ namespace dataTranferBurgett.Controllers
                 ActiveGame = activeGame,
                 ActiveCat = activeCat,
                 ActiveSport = activeSport,
-                Games = context.Games.ToList(),
-                Categories = context.Categories.ToList(),
-                Sports = context.Sports.ToList()
+                Games = context.Game.ToList(),
+                Categories = context.Category.ToList(),
+                Sports = context.Sport.ToList()
             };
 
-            IQueryable<Country> query = context.Countries;
+            IQueryable<Country> query = context.Country;
             if (activeGame != "all")
                 query = query.Where(
                     c => c.Game.GameID.ToLower() == activeGame.ToLower());
@@ -67,7 +67,7 @@ namespace dataTranferBurgett.Controllers
             var session = new OlympicsSession(HttpContext.Session);
             var model = new CountryViewModel
             {
-                Country = context.Countries
+                Country = context.Country
                     .Include(c => c.Game)
                     .Include(c => c.Category)
                     .Include(c => c.Sport)
@@ -82,7 +82,7 @@ namespace dataTranferBurgett.Controllers
         [HttpPost]
         public RedirectToActionResult Add(CountryViewModel model)
         {
-            model.Country = context.Countries
+            model.Country = context.Country
                 .Include(c => c.Game)
                 .Include(c => c.Category)
                 .Include(c => c.Sport)
