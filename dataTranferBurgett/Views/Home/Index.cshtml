@@ -41,22 +41,16 @@
                 }
         </div>
     </div>
+
     <div class="col-sm-9">
         <ul class="list-inline">
             @foreach (Country cntry in Model.Countries)
             {
                 <li class="list-inline-item">
-                    <form asp-action="Details" method="post">
-                        <button type="submit" class="bg-white border-0">
-                            <img src="~/images/@cntry.FlagImage" alt="@cntry.Name"
-                                 title="@cntry.Name | @cntry.Game.Name @cntry.Category.Name @cntry.Sport.Name" />
-                        </button>
-
-                        <input type="hidden" asp-for="@cntry.CountryID" />
-                        <input type="hidden" asp-for="ActiveGame" />
-                        <input type="hidden" asp-for="ActiveCat" />
-                        <input type="hidden" asp-for="ActiveSport" />
-                    </form>
+                    <a asp-action="Details" asp-route-id="@cntry.CountryID">
+                        <img src="~/images/@cntry.FlagImage" alt="@cntry.Name"
+                             title="@cntry.Name | @cntry.Game.Name @cntry.Category.Name @cntry.Sport.Name" />
+                    </a>
                 </li>
             }
         </ul>
