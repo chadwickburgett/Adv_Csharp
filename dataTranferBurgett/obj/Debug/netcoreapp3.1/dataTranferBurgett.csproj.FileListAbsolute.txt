@@ -462,3 +462,5 @@ C:\Users\dontf\Documents\GitHub\Adv_Csharp\dataTranferBurgett\bin\Debug\netcorea
 C:\Users\dontf\Documents\GitHub\Adv_Csharp\dataTranferBurgett\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
 C:\Users\dontf\Documents\GitHub\Adv_Csharp\dataTranferBurgett\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
 C:\Users\dontf\Documents\GitHub\Adv_Csharp\dataTranferBurgett\obj\Debug\netcoreapp3.1\dataTranferBurgett.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\dontf\Documents\GitHub\Adv_Csharp\dataTranferBurgett\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.Design.dll
+C:\Users\dontf\Documents\GitHub\Adv_Csharp\dataTranferBurgett\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.SqlServer.Design.dll
