@@ -384,3 +384,5 @@ C:\Users\dontf\Documents\GitHub\Adv_Csharp\dataTranferBurgett\obj\Release\netcor
 C:\Users\dontf\Documents\GitHub\Adv_Csharp\dataTranferBurgett\obj\Release\netcoreapp3.1\dataTranferBurgett.dll
 C:\Users\dontf\Documents\GitHub\Adv_Csharp\dataTranferBurgett\obj\Release\netcoreapp3.1\dataTranferBurgett.pdb
 C:\Users\dontf\Documents\GitHub\Adv_Csharp\dataTranferBurgett\obj\Release\netcoreapp3.1\dataTranferBurgett.genruntimeconfig.cache
+C:\Users\dontf\Documents\GitHub\Adv_Csharp\dataTranferBurgett\bin\Release\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.Design.dll
+C:\Users\dontf\Documents\GitHub\Adv_Csharp\dataTranferBurgett\bin\Release\netcoreapp3.1\Microsoft.EntityFrameworkCore.SqlServer.Design.dll

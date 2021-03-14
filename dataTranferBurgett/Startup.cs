@@ -44,7 +44,7 @@ namespace dataTranferBurgett
             {
                 endpoints.MapControllerRoute(
                     name: "",
-                    pattern: "{controller=Home}/{action=Index}/conf/{activeGame}/div/{activeCat}/div/{activeSport}");
+                    pattern: "{controller=Home}/{action=Index}/game/{activeGame}/category/{activeCat}/sport/{activeSport}");
 
                 endpoints.MapControllerRoute(
                     name: "default",

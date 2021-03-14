@@ -16,12 +16,16 @@ namespace dataTranferBurgett.Controllers
             context = ctx;
         }
 
-        public IActionResult Index(string activeGame = "all", string activeCat = "all", string activeSport = "all")
+        public IActionResult Index(CountryListViewModel model)
         {
+            model.Categories = context.Category.ToList();
+            model.Games = context.Game.ToList();
+            model.Sports = context.Sport.ToList();
+
             var session = new OlympicsSession(HttpContext.Session);
-            session.SetActiveGame(activeGame);
-            session.SetActiveCat(activeCat);
-            session.SetActiveSport(activeSport);
+            session.SetActiveGame(model.ActiveGame);
+            session.SetActiveCat(model.ActiveCat);
+            session.SetActiveSport(model.ActiveSport);
 
             int? count = session.GetMyCountryCount();
             if (count == null)
@@ -37,26 +41,16 @@ namespace dataTranferBurgett.Controllers
                 session.SetMyCountries(mycountries);
             }
 
-            var model = new CountryListViewModel
-            {
-                ActiveGame = activeGame,
-                ActiveCat = activeCat,
-                ActiveSport = activeSport,
-                Games = context.Game.ToList(),
-                Categories = context.Category.ToList(),
-                Sports = context.Sport.ToList()
-            };
-
             IQueryable<Country> query = context.Country;
-            if (activeGame != "all")
+            if (model.ActiveGame != "all")
                 query = query.Where(
-                    c => c.Game.GameID.ToLower() == activeGame.ToLower());
-            if (activeCat != "all")
+                    c => c.Game.GameID.ToLower() == model.ActiveGame.ToLower());
+            if (model.ActiveCat != "all")
                 query = query.Where(
-                    c => c.Category.CategoryId.ToLower() == activeCat.ToLower());
-            if (activeSport != "all")
+                    c => c.Category.CategoryId.ToLower() == model.ActiveCat.ToLower());
+            if (model.ActiveSport != "all")
                 query = query.Where(
-                    c => c.Sport.SportID.ToLower() == activeSport.ToLower());
+                    c => c.Sport.SportID.ToLower() == model.ActiveSport.ToLower());
             model.Countries = query.ToList();
 
             return View(model);
