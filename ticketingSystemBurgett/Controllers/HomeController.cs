@@ -26,7 +26,7 @@ namespace ticketingSystemBurgett.Controllers
 
             var statusOptions = new QueryOptions<Status>
             {
-                Includes = "Tickets"
+                Includes = "Ticketings"
             };
 
             if (id == 0)

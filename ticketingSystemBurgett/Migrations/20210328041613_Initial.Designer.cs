@@ -9,8 +9,8 @@ using ticketingSystemBurgett.Models;
 namespace ticketingSystemBurgett.Migrations
 {
     [DbContext(typeof(TicketingContext))]
-    [Migration("20210328035634_FixingErrors")]
-    partial class FixingErrors
+    [Migration("20210328041613_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

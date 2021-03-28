@@ -22,7 +22,8 @@ namespace ticketingSystemBurgett.Migrations
                 name: "Statuses",
                 columns: table => new
                 {
-                    StatusId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    StatusId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -40,11 +41,19 @@ namespace ticketingSystemBurgett.Migrations
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     SprintNumber = table.Column<int>(type: "int", nullable: false),
                     PointValue = table.Column<int>(type: "int", nullable: false),
-                    StatusId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    StatusId = table.Column<int>(type: "int", nullable: false),
+                    CategoryId = table.Column<int>(type: "int", nullable: false),
+                    CategoryId1 = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Ticketing", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Ticketing_Categories_CategoryId1",
+                        column: x => x.CategoryId1,
+                        principalTable: "Categories",
+                        principalColumn: "CategoryId",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Ticketing_Statuses_StatusId",
                         column: x => x.StatusId,
@@ -58,11 +67,31 @@ namespace ticketingSystemBurgett.Migrations
                 columns: new[] { "StatusId", "Name" },
                 values: new object[,]
                 {
-                    { "todo", "To Do" },
-                    { "inprogress", "In Progress" },
-                    { "qa", "Quality Assurance" },
-                    { "done", "Done" }
+                    { 1, "To Do" },
+                    { 2, "In Progress" },
+                    { 3, "Quality Assurance" },
+                    { 4, "Done" }
                 });
+
+            migrationBuilder.InsertData(
+                table: "Ticketing",
+                columns: new[] { "Id", "CategoryId", "CategoryId1", "Description", "Name", "PointValue", "SprintNumber", "StatusId" },
+                values: new object[] { 1, 0, null, "Convert feet to inches", "feetToInches", 5, 2, 1 });
+
+            migrationBuilder.InsertData(
+                table: "Ticketing",
+                columns: new[] { "Id", "CategoryId", "CategoryId1", "Description", "Name", "PointValue", "SprintNumber", "StatusId" },
+                values: new object[] { 2, 0, null, "Convert inches to feet", "inchesToFeet", 15, 6, 1 });
+
+            migrationBuilder.InsertData(
+                table: "Ticketing",
+                columns: new[] { "Id", "CategoryId", "CategoryId1", "Description", "Name", "PointValue", "SprintNumber", "StatusId" },
+                values: new object[] { 3, 0, null, "Convert inches to meters", "inchesToMeters", 10, 4, 1 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Ticketing_CategoryId1",
+                table: "Ticketing",
+                column: "CategoryId1");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Ticketing_StatusId",
@@ -73,10 +102,10 @@ namespace ticketingSystemBurgett.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Categories");
+                name: "Ticketing");
 
             migrationBuilder.DropTable(
-                name: "Ticketing");
+                name: "Categories");
 
             migrationBuilder.DropTable(
                 name: "Statuses");
