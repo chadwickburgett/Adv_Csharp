@@ -33,8 +33,10 @@ namespace ticketingSystemBurgett.Migrations
 
             modelBuilder.Entity("ticketingSystemBurgett.Models.Status", b =>
                 {
-                    b.Property<string>("StatusId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("StatusId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -46,22 +48,22 @@ namespace ticketingSystemBurgett.Migrations
                     b.HasData(
                         new
                         {
-                            StatusId = "todo",
+                            StatusId = 1,
                             Name = "To Do"
                         },
                         new
                         {
-                            StatusId = "inprogress",
+                            StatusId = 2,
                             Name = "In Progress"
                         },
                         new
                         {
-                            StatusId = "qa",
+                            StatusId = 3,
                             Name = "Quality Assurance"
                         },
                         new
                         {
-                            StatusId = "done",
+                            StatusId = 4,
                             Name = "Done"
                         });
                 });
@@ -72,6 +74,12 @@ namespace ticketingSystemBurgett.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CategoryId1")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -87,26 +95,76 @@ namespace ticketingSystemBurgett.Migrations
                     b.Property<int>("SprintNumber")
                         .HasColumnType("int");
 
-                    b.Property<string>("StatusId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("StatusId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CategoryId1");
 
                     b.HasIndex("StatusId");
 
                     b.ToTable("Ticketing");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CategoryId = 0,
+                            Description = "Convert feet to inches",
+                            Name = "feetToInches",
+                            PointValue = 5,
+                            SprintNumber = 2,
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CategoryId = 0,
+                            Description = "Convert inches to feet",
+                            Name = "inchesToFeet",
+                            PointValue = 15,
+                            SprintNumber = 6,
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CategoryId = 0,
+                            Description = "Convert inches to meters",
+                            Name = "inchesToMeters",
+                            PointValue = 10,
+                            SprintNumber = 4,
+                            StatusId = 1
+                        });
                 });
 
             modelBuilder.Entity("ticketingSystemBurgett.Models.Ticketing", b =>
                 {
+                    b.HasOne("ticketingSystemBurgett.Models.Category", "Category")
+                        .WithMany("Ticketings")
+                        .HasForeignKey("CategoryId1")
+                        .OnDelete(DeleteBehavior.Restrict);
+
                     b.HasOne("ticketingSystemBurgett.Models.Status", "Status")
-                        .WithMany()
+                        .WithMany("Ticketings")
                         .HasForeignKey("StatusId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("Category");
+
                     b.Navigation("Status");
+                });
+
+            modelBuilder.Entity("ticketingSystemBurgett.Models.Category", b =>
+                {
+                    b.Navigation("Ticketings");
+                });
+
+            modelBuilder.Entity("ticketingSystemBurgett.Models.Status", b =>
+                {
+                    b.Navigation("Ticketings");
                 });
 #pragma warning restore 612, 618
         }

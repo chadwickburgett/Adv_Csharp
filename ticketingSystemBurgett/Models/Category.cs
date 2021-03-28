@@ -9,5 +9,7 @@ namespace ticketingSystemBurgett.Models
     {
         public string CategoryId { get; set; }
         public string Name { get; set; }
+
+        public ICollection<Ticketing> Ticketings { get; set; }
     }
 }

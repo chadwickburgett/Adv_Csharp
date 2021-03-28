@@ -1,39 +1,37 @@
-﻿@model TicketingViewModel
+﻿@model Ticketing
 
-<h2>New Ticket</h2>
+@{ ViewData["Title"] = $"{ViewBag.Operation} Ticketing"; }
 
-<div asp-validation-summary="All" class="text-danger"></div>
+<h1 class="display-4">@ViewBag.Operation New Ticket</h1>
 
 <form asp-action="Add" method="post">
-
+    <div asp-validation-summary="All" class="text-danger"></div>
     <div class="form-group">
-        <label asp-for="CurrentTicket.Name">Name:</label>
-        <input type="text" asp-for="CurrentTicket.Name" class="form-control">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <input asp-for="Description" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="PointValue"></label>
+        <input asp-for="PointValue" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="SprintNumber"></label>
+        <input asp-for="SprintNumber" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="StatusId"></label>
+        <select asp-for="StatusId" class="form-control"
+                asp-items="@(new SelectList(ViewBag.Status, "StatusId", "Name"))"></select>
     </div>
 
-    <div class="form-group">
-        <label asp-for="CurrentTicket.Description">Description:</label>
-        <input type="text" asp-for="CurrentTicket.Description" class="form-control">
-    </div>
+    @if (ViewBag.Operation == "Edit")
+    {
+<input type="hidden" asp-for="Id" />}
 
-    <div class="form-group">
-        <label asp-for="CurrentTicket.SprintNumber">Sprint Number:</label>
-        <input type="text" asp-for="CurrentTicket.SprintNumber" class="form-control">
-    </div>
-    
-    <div class="form-group">
-        <label asp-for="CurrentTicket.PointValue">Point Value:</label>
-        <input type="text" asp-for="CurrentTicket.PointValue" class="form-control">
-    </div>
-
-    <div class="form-group">
-        <label asp-for="CurrentTicket.StatusId">Status:</label>
-        <select asp-for="CurrentTicket.StatusId" class="form-control"
-                asp-items="@(new SelectList(Model.Statuses, "StatusId", "Name"))">
-            <option value=""></option>
-        </select>
-    </div>
-
-    <button type="submit" class="btn btn-primary">Add</button>
-    <a asp-action="Index" class="btn btn-primary">Cancel</a>
+    <button type="submit" class="btn btn-dark">@ViewBag.Operation</button>
+    <a asp-action="Index" asp-controller="Home" class="btn btn-outline-dark">Cancel</a>
 </form>

@@ -7,7 +7,9 @@ namespace ticketingSystemBurgett.Models
 {
     public class Status
     {
-        public string StatusId { get; set; }
+        public int StatusId { get; set; }
         public string Name { get; set; }
+
+        public ICollection<Ticketing> Ticketings { get; set; }
     }
 }

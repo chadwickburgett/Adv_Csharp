@@ -8,78 +8,40 @@ namespace ticketingSystemBurgett.Controllers
 {
     public class HomeController : Controller
     {
-        private TicketingContext context;
-        public HomeController(TicketingContext ctx) => context = ctx;
+        private Repository<Ticketing> ticketings { get; set; }
+        private Repository<Status> statuses { get; set; }
 
-        public IActionResult Index(string id)
+        public HomeController(TicketingContext ctx)
         {
-            TicketingViewModel model = new TicketingViewModel();
-
-            var filters = new Filters(id);
-
-            model.Filters = new Filters(id);
-            model.Statuses = context.Statuses.ToList();
-
-            IQueryable<Ticketing> query = context.Ticketing
-                .Include(t => t.Status);
-            if (filters.HasStatus)
-            {
-                query = query.Where(t => t.StatusId == filters.StatusId);
-            }
-           
-            var tickets = query.OrderBy(t => t.SprintNumber).ToList();
-
-            model.Ticket = tickets;
-            return View(model);
+            ticketings = new Repository<Ticketing>(ctx);
+            statuses = new Repository<Status>(ctx);
         }
 
-        public IActionResult Add()
+        public ViewResult Index(int id)
         {
-            TicketingViewModel model = new TicketingViewModel();
-            model.Statuses = context.Statuses.ToList();
-            return View(model);
-        }
-
-        [HttpPost]
-        public IActionResult Add(TicketingViewModel model)
-        {
-            if (ModelState.IsValid)
+            var ticketOptions = new QueryOptions<Ticketing>
             {
-                context.Ticketing.Add(model.CurrentTicket);
-                context.SaveChanges();
-                return RedirectToAction("Index");
+                OrderBy = d => d.Id
+            };
+
+            var statusOptions = new QueryOptions<Status>
+            {
+                Includes = "Tickets"
+            };
+
+            if (id == 0)
+            {
+                statusOptions.OrderBy = c => c.StatusId;
             }
             else
             {
-                model.Statuses = context.Statuses.ToList();
-                return View(model);
+                statusOptions.Where = c => c.StatusId == id;
+                statusOptions.OrderBy = c => c.StatusId;
             }
-        }
 
-        [HttpPost]
-        public IActionResult Filter(string[] filter)
-        {
-            string id = string.Join('-', filter);
-            return RedirectToAction("Index", new { ID = id });
-        }
-
-        [HttpPost]
-        public IActionResult Edit([FromRoute] string id, Ticketing selected)
-        {
-            if (selected.StatusId == null)
-            {
-                context.Ticketing.Remove(selected);
-            }
-            else
-            {
-                string newStatusId = selected.StatusId;
-                selected = context.Ticketing.Find(selected.Id);
-                selected.StatusId = newStatusId;
-                context.Ticketing.Update(selected);
-            }
-            context.SaveChanges();
-
-            return RedirectToAction("Index", new { ID = id });
+            // execute queries
+            ViewBag.Ticketing = ticketings.List(ticketOptions);
+            return View(statuses.List(statusOptions));
         }
     }
 }

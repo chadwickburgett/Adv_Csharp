@@ -23,7 +23,10 @@ namespace ticketingSystemBurgett.Models
         public int PointValue { get; set; }
 
         [Required(ErrorMessage = "Please select a status.")]
-        public string StatusId { get; set; }
+        public int StatusId { get; set; }
         public Status Status { get; set; }
+
+        public int CategoryId { get; set; }
+        public Category Category { get; set; }
     }
 }

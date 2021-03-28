@@ -17,12 +17,8 @@ namespace ticketingSystemBurgett.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Status>().HasData(
-                new Status { StatusId = "todo", Name = "To Do" },
-                new Status { StatusId = "inprogress", Name = "In Progress" },
-                new Status { StatusId = "qa", Name = "Quality Assurance" },
-                new Status { StatusId = "done", Name = "Done" }
-            );
+            modelBuilder.ApplyConfiguration(new StatusConfig());
+            modelBuilder.ApplyConfiguration(new TicketingConfig());
         }
     }
 }

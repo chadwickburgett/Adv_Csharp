@@ -1,15 +1,17 @@
-﻿@model TicketingViewModel
-@{
-    
-}
+﻿@model IEnumerable<Ticketing>
+@{ ViewData["Title"] = "Ticket Database";
+
+    // get value of id route segment
+    int id = Convert.ToInt32(ViewContext.RouteData.Values["id"]); }
+
 <div class="row">
     <div class="col-sm-2">
         <form asp-action="Filter" method="post">
             <div class="form-group">
                 <label>Status:</label>
                 <select name="filter" class="form-control"
-                        asp-items="@(new SelectList(Model.Statuses,
-                    "StatusId", "Name", Model.Filters.StatusId))">
+                        asp-items="@(new SelectList(ViewBag.Status,
+                    "StatusId", "Name", ViewBag.Filters.StatusId))">
                     <option value="all">All</option>
                 </select>
             </div>
@@ -33,35 +35,35 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (Ticketing ticket in Model.Ticket)
+                @foreach (Ticketing ticket in ViewBag.Ticket)
                 {
-                <tr>
-                    <td>@ticket.Name</td>
-                    <td>@ticket.Description</td>
-                    <td>@ticket.SprintNumber</td>
-                    <td>@ticket.PointValue</td>
-                    <td>
-                        <form asp-action="Edit" method="post"
-                              asp-route-id="@Model.Filters.FilterString"
-                              class="mr-2">
+                    <tr>
+                        <td>@ticket.Name</td>
+                        <td>@ticket.Description</td>
+                        <td>@ticket.SprintNumber</td>
+                        <td>@ticket.PointValue</td>
+                        <td>
+                            <form asp-action="Edit" method="post"
+                                  asp-route-id="@ViewBag.Filters.FilterString"
+                                  class="mr-2">
 
-                            <input type="hidden"
-                                   name="@nameof(Ticketing.Id)" value="@ticket.Id" />
+                                <input type="hidden"
+                                       name="@nameof(Ticketing.Id)" value="@ticket.Id" />
 
-                            <button type="submit"
-                                    name="@nameof(Ticketing.StatusId)" value="closed"
-                                    class="btn btn-primary btn-sm">
-                                Done
-                            </button>
+                                <button type="submit"
+                                        name="@nameof(Ticketing.StatusId)" value="closed"
+                                        class="btn btn-primary btn-sm">
+                                    Done
+                                </button>
 
-                            <button type="submit"
-                                    class="btn btn-primary btn-sm">
-                                Delete
-                            </button>
-                        </form>
-                    </td>
-                </tr>
-                }
+                                <button type="submit"
+                                        class="btn btn-primary btn-sm">
+                                    Delete
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+}
             </tbody>
         </table>
     </div>
