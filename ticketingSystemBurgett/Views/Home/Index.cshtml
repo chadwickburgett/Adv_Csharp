@@ -1,14 +1,14 @@
 ﻿@model IEnumerable<Ticketing>
 
 @{
-    ViewData["Title"] = "Class Schedule";
+    ViewData["Title"] = "Ticketing System";
 
     // get value of id route segment
     int id = Convert.ToInt32(ViewContext.RouteData.Values["id"]);
 }
 
 <div class="text-center">
-    <h1 class="display-4">Class Schedule</h1>
+    <h1 class="display-4">Ticketing System</h1>
 
     @* create links to filter classes by day, mark selected day with 'btn-dark' css class *@
     @foreach (Ticketing d in ViewBag.Ticketing)
@@ -22,7 +22,7 @@
 
 <table class="table">
     <thead>
-        <tr><th>Title</th><th>Number</th><th>Teacher</th><th>Day</th><th>Time</th><th></th></tr>
+        <tr><th>Name</th><th>Description</th><th>Status</th><th>Category</th><th>Sprint number</th><th>Point Value</th></tr>
     </thead>
     <tbody>
         @foreach (Ticketing c in Model)
@@ -35,9 +35,9 @@
             <td>@c.SprintNumber</td>
             <td>@c.PointValue</td>
             <td>
-                <a asp-action="Edit" asp-controller="Class" asp-route-id="@c.Id"
+                <a asp-action="Edit" asp-controller="Ticket" asp-route-id="@c.Id"
                    class="btn btn-outline-dark">Edit</a>
-                <a asp-action="Delete" asp-controller="Class" asp-route-id="@c.Id"
+                <a asp-action="Delete" asp-controller="Ticket" asp-route-id="@c.Id"
                    class="btn btn-outline-dark">Delete</a>
             </td>
         </tr>
