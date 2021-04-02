@@ -18,7 +18,7 @@
     }
 </div>
 
-<a asp-action="Add" asp-controller="Class" class="ml-3">Add Class</a>
+<a asp-action="Add" asp-controller="Ticket" class="ml-3">Add Ticket</a>
 
 <table class="table">
     <thead>
@@ -30,8 +30,8 @@
         <tr>
             <td>@c.Name</td>
             <td>@c.Description</td>
-            <td>@c.Status.Name</td>
-            <td>@c.Category.Name</td>
+            <td>@if (c.Status != null) {@c.Status.Name}</td>
+            <td>@if (c.Category != null){@c.Category.Name}</td>
             <td>@c.SprintNumber</td>
             <td>@c.PointValue</td>
             <td>

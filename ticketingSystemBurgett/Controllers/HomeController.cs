@@ -41,7 +41,8 @@ namespace ticketingSystemBurgett.Controllers
 
             // execute queries
             ViewBag.Ticketing = ticketings.List(ticketOptions);
-            return View(statuses.List(statusOptions));
+            //return View(statuses.List(statusOptions));
+            return View(ViewBag.Ticketing);
         }
     }
 }
