@@ -1,0 +1,5 @@
+C:\Users\dontf\Documents\GitHub\Adv_Csharp\Ch02FutueValueBurgett\obj\Debug\netcoreapp3.1\Ch02FutueValueBurgett.csprojAssemblyReference.cache
+C:\Users\dontf\Documents\GitHub\Adv_Csharp\Ch02FutueValueBurgett\obj\Debug\netcoreapp3.1\Ch02FutueValueBurgett.AssemblyInfoInputs.cache
+C:\Users\dontf\Documents\GitHub\Adv_Csharp\Ch02FutueValueBurgett\obj\Debug\netcoreapp3.1\Ch02FutueValueBurgett.AssemblyInfo.cs
+C:\Users\dontf\Documents\GitHub\Adv_Csharp\Ch02FutueValueBurgett\obj\Debug\netcoreapp3.1\Ch02FutueValueBurgett.csproj.CoreCompileInputs.cache
+C:\Users\dontf\Documents\GitHub\Adv_Csharp\Ch02FutueValueBurgett\obj\Debug\netcoreapp3.1\Ch02FutueValueBurgett.MvcApplicationPartsAssemblyInfo.cache
