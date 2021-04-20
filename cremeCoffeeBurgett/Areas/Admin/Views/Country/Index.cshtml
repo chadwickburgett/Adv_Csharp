@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Country>
+
+@{
+    ViewData["Title"] = " | Manage Countries";
+}
+
+<h1 class="mb-2">Manage Countries</h1>
+
+<h5 class="mt-2"><a asp-action="Add" asp-area="Admin">Add a Country</a></h5>
+
+<table class="table table-bordered table-striped table-sm">
+    <thead>
+        <tr><th>CountryId</th><th>Name</th><th></th></tr>
+    </thead>
+    <tbody>
+        @foreach (Country country in Model)
+        {
+            <tr>
+                <td>@country.CountryId</td>
+                <td>@country.Name</td>
+                <td>
+                    <a asp-action="ViewBeans" asp-area="Admin" asp-route-id="@country.CountryId"
+                       class="btn btn-primary">View Beans</a>
+                    <a asp-action="Edit" asp-area="Admin" asp-route-id="@country.CountryId"
+                       class="btn btn-primary">Edit</a>
+                    <a asp-action="Delete" asp-area="Admin" asp-route-id="@country.CountryId"
+                       class="btn btn-primary">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+

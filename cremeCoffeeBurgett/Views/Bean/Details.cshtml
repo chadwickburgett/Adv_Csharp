@@ -1,0 +1,36 @@
+﻿@model Bean
+
+@{
+    ViewData["Title"] = " | Bean Details";
+}
+
+<h1>Bean Details</h1>
+
+<table class="table table-bordered table-sm">
+    <thead>
+        <tr class="thead-dark">
+            <th>Name:</th><th>@Model.Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@(Model.CoffeeOrigins.Count > 1 ? "Origins" : "Origin")</td>
+            <td>
+                @foreach (CoffeeOrigin co in Model.CoffeeOrigins) {
+                    <p><a asp-action="Details" asp-controller="Author"
+                        asp-route-id="@co.OriginId"
+                        asp-route-slug="@co.Origin.FullName.Slug()">
+                        @co.Origin.FullName
+                    </a></p>
+                }
+            </td>
+        </tr>
+        <tr><td>Price:</td><td>@Model.Price.ToString("c")</td></tr>
+        <tr><td>Country:</td><td>@Model.Country.Name</td></tr>
+    </tbody>
+</table>
+
+<form asp-action="Add" asp-controller="Cart" method="post">
+    <button type="submit" name="id" value="@Model.BeanId"
+        class="btn btn-primary">Add To Cart</button>
+</form>

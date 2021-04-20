@@ -1,0 +1,85 @@
+﻿@model BeanViewModel
+
+@{
+    // this view is used for add, edit, and delete.
+    // Which one is determined by the action method name.
+    var action = ViewContext.RouteData.Values["action"].ToString().Capitalize();
+
+    ViewData["Title"] = $" | {action} Bean";
+}
+
+<h1>@action Bean</h1>
+
+<form asp-action="@action" asp-area="Admin" method="post">
+
+    <input type="hidden" asp-for="Bean.BeanId" />
+
+    <div class="form-group row">
+        <div class="col-sm-2"><label>Name:</label></div>
+
+        @* if deleting, display name in a label and put value in hidden field
+            for delete message. Otherwise, provide a text box*@
+        @if (Operation.IsDelete(action))
+        {
+            <div class="col-sm-4"><label>@Model.Bean.Name</label></div>
+            <input type="hidden" asp-for="Bean.Name" />
+        }
+        else
+        {
+            <div class="col-sm-4">
+                <input type="text" asp-for="Bean.Name" class="form-control" />
+            </div>
+            <div class="col-sm-6">
+                <span asp-validation-for="Bean.Name" class="text-danger"></span>
+            </div>
+        }
+    </div>
+
+    @* if not deleting, display text boxes and drop-downs for rest of fields*@
+    @if (!Operation.IsDelete(action))
+    {
+        <div class="form-group row">
+            <div class="col-sm-2"><label>Price:</label></div>
+            <div class="col-sm-4">
+                <input type="text" asp-for="Bean.Price" class="form-control" />
+            </div>
+            <div class="col-sm-6">
+                <span asp-validation-for="Bean.Price" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-2"><label>Country:</label></div>
+            <div class="col-sm-4">
+                <select asp-for="Bean.CountryId" class="form-control"
+                        asp-items='@new SelectList(Model.Countries, "CountryId", "Name", Model.Bean.CountryId)'>
+                </select>
+            </div>
+            <div class="col-sm-6">
+                <span asp-validation-for="Bean.CountryId" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-2">
+                <label>Origin(s):</label><br />
+            </div>
+            <div class="col-sm-4">
+                <select asp-for="SelectedOrigins" class="form-control"
+                        asp-items='@new MultiSelectList(Model.Origins, "OriginId", "FullName", Model.SelectedOrigins)'>
+                </select>
+                (Hold down CTRL or CMD key to select multiple)
+            </div>
+            <div class="col-sm-6">
+                <span asp-validation-for="SelectedOrigins" class="text-danger"></span>
+            </div>
+        </div>
+    }
+    <div class="row">
+        <div class="col-sm-4 offset-sm-2">
+            <button type="submit" class="btn btn-primary">@action</button>
+
+            @* return user to main admin page after add, or to search page otherwise *@
+            <a asp-action="@(Operation.IsAdd(action) ? "Index" : "Search")"
+               class="btn btn-primary">Cancel</a>
+        </div>
+    </div>
+</form>

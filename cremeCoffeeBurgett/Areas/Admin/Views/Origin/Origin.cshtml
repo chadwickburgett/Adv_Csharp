@@ -1,0 +1,56 @@
+﻿@model Origin
+
+@{
+    var action = ViewContext.RouteData.Values["action"].ToString().Capitalize();
+
+    ViewData["Title"] = $" | {action} Country";
+}
+
+<h1>@action Origin</h1>
+
+<form asp-action="@action" asp-area="Admin" method="post">
+
+    @* Origin ID needed by both delete and edit *@
+    <input type="hidden" asp-for="OriginId" />
+
+    @* Operation field needed by remote validation *@
+    <input type="hidden" name="Operation" value="@action" />
+
+    @* if deleting, just display name and process, but include name and process in
+        hidden fields so can be used to display delete message.
+        Otherwise, provide text boxes for first and last name. *@
+    @if (Operation.IsDelete(action))
+    {
+        <div class="col-sm-4"><label>@Model.FullName</label></div>
+        <input type="hidden" asp-for="Name" />
+        <input type="hidden" asp-for="Process" />
+    }
+    else
+    {
+        <div class="form-group row">
+            <div class="col-sm-2"><label>Name:</label></div>
+            <div class="col-sm-4">
+                <input type="text" asp-for="@Model.Name" class="form-control" />
+            </div>
+            <div class="col-sm-6">
+                <span asp-validation-for="@Model.Name" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-2"><label>Process:</label></div>
+            <div class="col-sm-4">
+                <input type="text" asp-for="@Model.Process" class="form-control" />
+            </div>
+            <div class="col-sm-6">
+                <span asp-validation-for="@Model.Process" class="text-danger"></span>
+            </div>
+        </div>
+    }
+
+    <div class="row">
+        <div class="col-sm-4 offset-sm-2">
+            <button type="submit" class="btn btn-primary">@action</button>
+            <a asp-action="Index" class="btn btn-primary">Cancel</a>
+        </div>
+    </div>
+</form>
