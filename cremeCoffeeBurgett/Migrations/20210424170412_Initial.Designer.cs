@@ -10,7 +10,7 @@ using cremeCoffeeBurgett.Models;
 namespace cremeCoffeeBurgett.Migrations
 {
     [DbContext(typeof(CoffeeshopContext))]
-    [Migration("20210420230701_Initial")]
+    [Migration("20210424170412_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

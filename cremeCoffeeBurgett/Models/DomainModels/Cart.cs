@@ -33,7 +33,7 @@ namespace cremeCoffeeBurgett.Models
             if (storedItems?.Count > items?.Count) {
                 foreach (CartItemDTO storedItem in storedItems) {
                     var bean = data.Get(new QueryOptions<Bean> {
-                        Include = "CoffeeOrigin.Origin, Country",
+                        Include = "CoffeeOrigins.Origin, Country",
                         Where = b => b.BeanId == storedItem.BeanId
                     });
                     if (bean != null) {
