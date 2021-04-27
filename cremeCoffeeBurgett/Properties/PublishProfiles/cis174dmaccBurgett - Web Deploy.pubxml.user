@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAm8uAwJT7q0CkgXdJikVkuwAAAAACAAAAAAAQZgAAAAEAACAAAAB3L1BGkRX3HOziPdzaVwzjqm4L3xWbQjhBjooNggh3NQAAAAAOgAAAAAIAACAAAABNalu1slgiOapiABdA4pK5786P/tFuUe25IaFJNr1rKoAAAAA+ezySMNJBv7hRyhGJa745XNTHVG9gVaKvpl1JkodllWh+l6wJts1buR5CxqdoKhYk6Gpaw7zCaAKPe3MZJWWw6HCKWE3uDpNKfQmyV9p5c8YGw+W/DEdhGsUjCGVoV1pXSUdSvAPvzLogv9xCLsB+l4y9LfeDn3cWOU8NVznElkAAAABfjWS7p5zTIPfmc5t6rG0GZPArS/YqDKCAJuGc+PuXmnoXKWP65kOttxa9ISfk/0R9QsV2rVMAC51/0gjC7nJF</EncryptedPassword>
+    <History>True|2021-04-26T23:52:42.2557386Z;</History>
+  </PropertyGroup>
+  <ItemGroup>
+    <AzureDBConnectionStrings Include="Data Source=tcp:burgettserver.database.windows.net,1433;Initial Catalog=contacts;User Id=chadburgett@burgettserver;Password=5%0EzU1o7X" />
+    <AzureDBConnectionStrings Include="Data Source=tcp:burgettserver.database.windows.net,1433;Initial Catalog=countries;User Id=countries@burgettserver;Password=FrodoLives" />
+  </ItemGroup>
+</Project>
